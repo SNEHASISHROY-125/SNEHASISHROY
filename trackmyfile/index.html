@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrackMyFiles Software Page</title>
+    <link rel="icon" href="./public/pastedimage-no9b-200h.ico" type="image/x-icon">
+    <meta property="og:title" content="Active Online Software Page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
+    />
+    <style>
+       body::-webkit-scrollbar {
+         width: 0.5em;
+         z-index: 100;
+         background-color:transparent;
+       }
+
+
+      body::-webkit-scrollbar-thumb {
+         background-color:white;
+         box-shadow:0 -100vh 0 100vh #5128f5;//magic
+       }
+    </style>
+  </head>
+  <body>
+    <link rel="stylesheet" href="./style.css" />
+    <div>
+      <link href="./index.css" rel="stylesheet" />
+
+      <div class="home-container">
+        <section class="home-hero">
+          <div class="home-menu">
+            <div id="mobile-menu" class="home-mobile-navigation">
+              <img
+                alt="pastedImage"
+                src="https://play.teleporthq.io/static/svg/placeholders/no-image.svg"
+                class="home-logo"
+              />
+              <div class="home-links">
+                <span class="Link">Solutions</span>
+                <span class="Link">How it works</span>
+                <span class="Link"> <a href="https://fudemy.me/about">Prices</a></span>
+              </div>
+              <div id="close-mobile-menu" class="home-close-mobile-menu">
+                <svg viewBox="0 0 804.5714285714286 1024" class="home-icon">
+                  <path
+                    d="M741.714 755.429c0 14.286-5.714 28.571-16 38.857l-77.714 77.714c-10.286 10.286-24.571 16-38.857 16s-28.571-5.714-38.857-16l-168-168-168 168c-10.286 10.286-24.571 16-38.857 16s-28.571-5.714-38.857-16l-77.714-77.714c-10.286-10.286-16-24.571-16-38.857s5.714-28.571 16-38.857l168-168-168-168c-10.286-10.286-16-24.571-16-38.857s5.714-28.571 16-38.857l77.714-77.714c10.286-10.286 24.571-16 38.857-16s28.571 5.714 38.857 16l168 168 168-168c10.286-10.286 24.571-16 38.857-16s28.571 5.714 38.857 16l77.714 77.714c10.286 10.286 16 24.571 16 38.857s-5.714 28.571-16 38.857l-168 168 168 168c10.286 10.286 16 24.571 16 38.857z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div class="home-desktop-navigation">
+              <nav class="home-centered">
+                <div class="home-left">
+                  <img
+                    alt="pastedImage"
+                    src="public/pastedimage-no9b-200h.png"
+                    class="home-logo1"
+                  />
+                  <div class="home-links1">
+                    <span class="Link">Solutions</span>
+                    <span class="Link">How it works</span>
+                    <span class="Link"><a href="./about">Prices</a></span>
+                  </div>
+                </div>
+                <div class="home-right">
+                  <span class="home-sign-in Link">Sign in</span>
+                  <div class="home-get-started">
+                    <span class="home-text06">Get started</span>
+                  </div>
+                  <div id="open-mobile-menu" class="home-burger-menu">
+                    <img
+                      alt="pastedImage"
+                      src="public/pastedimage-yxbd.svg"
+                      class="home-mobile-menu-button"
+                    />
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div>
+              <div class="home-container02">
+                <script defer="">
+                  /*
+                  Mobile menu - Code Embed
+                  */
+
+                  // Mobile menu
+                  const mobileMenu = document.querySelector('#mobile-menu')
+
+                  // Buttons
+                  const closeButton = document.querySelector('#close-mobile-menu')
+                  const openButton = document.querySelector('#open-mobile-menu')
+
+                  // On openButton click, set the mobileMenu position left to -100vw
+                  openButton.addEventListener('click', function() {
+                      mobileMenu.style.transform = 'translateX(0%)'
+                  })
+
+                  // On closeButton click, set the mobileMenu position to 0vw
+                  closeButton.addEventListener('click', function() {
+                      mobileMenu.style.transform = 'translateX(100%)'
+                  })
+                </script>
+              </div>
+            </div>
+          </div>
+          <header class="home-header">
+            <h1 class="home-text07">Keep Track of you files</h1>
+            <p class="home-text08">
+              TrackMyFiles is a dynamic file management tool that enables users
+              to efficiently organize and track their files. With the ability to
+              attach memo notes to files and easily locate them, TrackMyFiles
+              simplifies the process of file management.
+            </p>
+            <div class="home-get-started1">
+              <span class="home-text09"><a href="https://fudemy.me">Get started</a></span>
+            </div>
+          </header>
+          <div class="home-dashboard-preview">
+            <div class="home-outline">
+              <img
+                alt="pastedImage"
+                src="public/pastedimage-cdo-1000h.png"
+                loading="lazy"
+                class="home-image"
+              />
+            </div>
+          </div>
+        </section>
+        <section class="home-features">
+          <div class="home-title">
+            <span class="home-text10">
+              <span>Say Goodbye</span>
+              <br />
+              <span>to spending hours in searching files in your Pc.</span>
+            </span>
+            <span class="home-text14">
+              <span>
+                Save files with tag like keywords and get files matching keywords in a single search.
+              </span>
+              <span></span>
+            </span>
+          </div>
+          <div class="home-cards">
+            <div class="home-container03">
+              <div class="card">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-fii6m-200h.png"
+                  class="home-icon02"
+                />
+                <span class="home-text17">Schedule</span>
+                <span class="home-text18">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </span>
+              </div>
+              <div class="home-publish card">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-mimg-200h.png"
+                  class="home-icon03"
+                />
+                <span class="home-text19">Publish</span>
+                <span class="home-text20">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sedr
+                </span>
+              </div>
+            </div>
+            <div class="home-container04">
+              <div class="card home-analyze">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-l6p-200h.png"
+                  class="home-icon04"
+                />
+                <span class="home-text21">Analyze</span>
+                <span class="home-text22">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </span>
+              </div>
+              <div class="card">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-vyi5-200h.png"
+                  class="home-icon05"
+                />
+                <span class="home-text23">Get leads</span>
+                <span class="home-text24">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-statistics">
+          <div class="home-container05">
+            <div class="active-users-active-users metrics">
+              <!-- Dynamic D-count load from shields.io -->
+              <span class="active-users-text"><img src="https://img.shields.io/github/downloads/SNEHASISHROY-125/TrackMyFiles/total?color=blue&label=&style=plastic&logo=github&logoColor=white" alt="Downloads" style="width: 150px;"></span>
+              <span class="active-users-text1"><!-- This is a comment -->
+                <span>— Downloads</span>
+              </span>
+            </div>
+            <div class="active-users-active-users metrics">
+              <span class="active-users-text"><span>50k</span></span>
+              <span class="active-users-text1"><span>— Brands</span></span>
+            </div>
+            <div class="active-users-active-users metrics">
+              <span class="active-users-text"><span>250K</span></span>
+              <span class="active-users-text1">
+                <span>— Accounts Managed</span>
+              </span>
+            </div>
+            <div class="active-users-active-users metrics">
+              <span class="active-users-text"><span>30M</span></span>
+              <span class="active-users-text1">
+                <span>— Active leads</span>
+              </span>
+            </div>
+          </div>
+        </section>
+        <section class="home-banners">
+          <div class="home-banner-manage">
+            <div class="home-container06">
+              <div class="home-left1">
+                <span class="sub-title">Content Management</span>
+                <span class="home-text26 title">
+                  Manage all your platforms in just one place.
+                </span>
+                <span class="home-text27">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  
+                </span>
+                <div class="home-get-started2 template-button">
+                  <span class="home-text28">Get started</span>
+                </div>
+              </div>
+              <div class="home-image-container">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-wvmq%201-1200w.png"
+                  class="home-cards-image"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="home-banner-advanced-analytics">
+            <div class="home-centered-container">
+              <div class="home-image-container1">
+                <img
+                  alt="pastedImage"
+                  src="public/test-1200w.png"
+                  class="home-cards-image1"
+                />
+              </div>
+              <div class="home-right1">
+                <span class="sub-title">Reporting Metrics</span>
+                <h2 class="home-text30 title">
+                  Advanced analytics, easy to understand.
+                </h2>
+                <div class="home-category">
+                  <span class="home-text31">Power reports</span>
+                  <span class="home-text32">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. vv
+                  </span>
+                  <span class="home-text33">Example -&gt;</span>
+                </div>
+                <div class="home-category1">
+                  <span class="home-text34">Power reports</span>
+                  <span class="home-text35">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. vv
+                  </span>
+                  <span class="home-text36">Example -&gt;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-banner">
+            <div class="home-container07">
+              <div class="home-left2">
+                <span class="home-text37">Improve Scheduling</span>
+                <h2 class="home-text38 title">
+                  Powerful scheduler that saves you time
+                </h2>
+                <span class="home-text39">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  vv
+                </span>
+                <div class="home-get-started3 template-button">
+                  <span class="home-text40">Get started</span>
+                </div>
+              </div>
+              <div class="home-image-container2">
+                <img
+                  alt="pastedImage"
+                  src="public/83d913a38a75e38d7cef4fea757ed7ed-1200w.png"
+                  class="home-cards-image2"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-integrations">
+          <div class="home-centered-container1">
+            <div class="home-heading">
+              <span class="sub-title">Integrations</span>
+              <span class="title">
+                Integrated with the tools you know and love
+              </span>
+              <span class="home-text43">
+                Access files in Telegram chat directly from your computer.
+              </span>
+            </div>
+            <div class="home-pills-container">
+              <div class="home-pills">
+                <div class="home-container08">
+                  <div class="home-container09"></div>
+                </div>
+                <div class="home-container10"></div>
+              </div>
+              <div class="you-tube-you-tube">
+                <img
+                  alt="pastedImage"
+                  src="public/logos/group%201017-200h.png"
+                  class="you-tube-pasted-image"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-how-it-works">
+          <div class="home-centered-container2">
+            <div class="home-heading1">
+              <span class="home-text44">How it works</span>
+              <span class="home-text45 title">
+                Being social and getting leads has never been easier
+              </span>
+            </div>
+            <div class="home-category2">
+              <div class="home-headng">
+                <span class="home-text46">1 — Sign up</span>
+                <span class="home-text47">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  vv
+                </span>
+                <div class="home-get-started4 template-button">
+                  <span class="home-text48">Get started</span>
+                </div>
+              </div>
+              <div class="home-container11">
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-k5xi%201-1200w.png"
+                  class="home-pasted-image"
+                />
+              </div>
+            </div>
+            <div class="home-row">
+              <div class="home-category3">
+                <div class="home-headng1">
+                  <span class="home-text49">2 — Act</span>
+                  <span class="home-text50">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. vv
+                  </span>
+                </div>
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-ibg-1200w.png"
+                  class="home-pasted-image1"
+                />
+              </div>
+              <div class="home-category4">
+                <div class="home-headng2">
+                  <span class="home-text51">2 — Act</span>
+                  <span class="home-text52">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. vv
+                  </span>
+                </div>
+                <img
+                  alt="pastedImage"
+                  src="public/pastedimage-3c4o-1200w.png"
+                  class="home-pasted-image2"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="home-action-bar">
+          <div class="home-action">
+            <div class="home-heading2">
+              <span class="home-text53 title">
+                <span>Get leads now&nbsp;</span>
+                <br />
+                <span>with Active!</span>
+              </span>
+              <span class="home-text57">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </span>
+              <div class="home-get-started5 template-button">
+                <span class="home-text58">
+                  <span>Start free</span>
+                  <br />
+                </span>
+              </div>
+            </div>
+            <div class="home-images">
+              <img
+                alt="image"
+                src="public/e564eaa3c4fab71792794d666a281742-1200w.png"
+                class="home-image1"
+              />
+            </div>
+          </div>
+        </section>
+        <section class="home-faq">
+          <div class="home-heading3">
+            <span class="home-text61 title">Frequently asked questions</span>
+            <span class="home-text62">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. vv
+            </span>
+          </div>
+          <div class="home-accordion">
+            <div data-faq="closed" class="accordionContainer">
+              <div class="home-header1">
+                <span class="home-text63">
+                  — What is sit amet, consectetur adipiscing elit, sed do?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="accordionIcon">
+                  <path
+                    d="M316 366l196 196 196-196 60 60-256 256-256-256z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="accordionContent">
+                <span class="home-text64">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum.
+                </span>
+              </div>
+            </div>
+            <div class="accordionContainer">
+              <div class="home-header2">
+                <span class="home-text65">
+                  — Why is dolore magna aliqua excepteur sint
+                </span>
+                <svg viewBox="0 0 1024 1024" class="accordionIcon">
+                  <path
+                    d="M316 366l196 196 196-196 60 60-256 256-256-256z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="accordionContent">
+                <span class="home-text66">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum.
+                </span>
+              </div>
+            </div>
+            <div data-faq="closed" class="accordionContainer">
+              <div class="home-header3">
+                <span class="home-text67">
+                  — Is excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum?
+                </span>
+                <svg viewBox="0 0 1024 1024" class="accordionIcon">
+                  <path
+                    d="M316 366l196 196 196-196 60 60-256 256-256-256z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="accordionContent">
+                <span class="home-text68">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum.
+                </span>
+              </div>
+            </div>
+            <div data-faq="closed" class="accordionContainer">
+              <div class="home-header4">
+                <span class="home-text69">
+                  — Who quasi architecto beatae vitae dicta sunt explicabo. Nemo
+                  enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                  aut fugit, sed quia consequuntur magni
+                </span>
+                <svg viewBox="0 0 1024 1024" class="accordionIcon">
+                  <path
+                    d="M316 366l196 196 196-196 60 60-256 256-256-256z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="accordionContent">
+                <span class="home-text70">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum.
+                </span>
+              </div>
+            </div>
+            <div data-faq="closed" class="accordionContainer">
+              <div class="home-header5">
+                <span class="home-text71">
+                  — Is minim veniam quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </span>
+                <svg viewBox="0 0 1024 1024" class="accordionIcon">
+                  <path
+                    d="M316 366l196 196 196-196 60 60-256 256-256-256z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="accordionContent">
+                <span class="home-text72">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                  qui officia deserunt mollit anim id est laborum.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="home-container13">
+              <script>
+                // Accordion - Code Embed
+
+                const accordionContainers = document.querySelectorAll('.accordionContainer'); // All accordion containers
+                const accordionContents = document.querySelectorAll('.accordionContent'); // All accordion content
+                const accordionIcons = document.querySelectorAll('.accordionIcon'); // All accordion icons
+
+                accordionContents.forEach((accordionContent) => {
+                    accordionContent.style.display = 'none'; //Hides all accordion contents
+                });
+
+                accordionContainers.forEach((accordionContainer, index) => {
+                    accordionContainer.addEventListener('click', () => {
+                        accordionContents.forEach((accordionContent) => {
+                            accordionContent.style.display = 'none'; //Hides all accordion contents
+                        });
+
+                        accordionIcons.forEach((accordionIcon) => {
+                            accordionIcon.style.transform = 'rotate(0deg)'; // Resets all icon transforms to 0deg (default)
+                        });
+
+                        if (accordionContainer.classList.contains('accordion-open')) { // Checks if this container has class 'accordion-open'
+                            accordionContainer.classList.remove('accordion-open'); // Removes class 'accordion-open'
+                        } else {
+                            accordionContainers.forEach((accordionContainer) => {
+                                accordionContainer.classList.remove('accordion-open'); // Removes class 'accordion-open' from all containers
+                            });
+
+                            accordionContainer.classList.add('accordion-open'); // Adds class 'accordion-open' to this container
+                            accordionContents[index].style.display = 'flex'; // Shows accordion content
+                            accordionIcons[index].style.transform = 'rotate(180deg)'; // Rotates accordion icon 180deg
+                        }
+                    });
+                });
+
+                /*
+                Here's what the above is doing:
+                    1. Selects all accordion containers, contents, and icons
+                    2. Hides all accordion contents
+                    3. Adds an event listener to each accordion container
+                    4. When an accordion container is clicked, it:
+                        - Hides all accordion contents
+                        - Resets all icon transforms to 0deg (default)
+                        - Checks if this container has class 'accordion-open'
+                            - If it does, it removes class 'accordion-open'
+                            - If it doesn't, it:
+                                - Removes class 'accordion-open' from all containers
+                                - Adds class 'accordion-open' to this container
+                                - Shows accordion content
+                                - Rotates accordion icon 180deg
+                */
+              </script>
+            </div>
+          </div>
+        </section>
+        <footer class="home-footer">
+          <div class="home-top">
+            <div class="home-left3">
+              <span class="home-text73">Subscribe to our newsletter</span>
+              <div class="home-subscription">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  class="home-textinput input"
+                />
+                <div class="home-subscribe">
+                  <span class="home-text74">Subscribe</span>
+                </div>
+              </div>
+              <span class="home-text75">
+                By subscribing to our newsletter you agree with our Terms and
+                Conditions.
+              </span>
+              <div class="home-contact">
+                <span class="home-text76">Contact</span>
+                <a
+                  href="mailto:rsnehasish125.dev@gmail.com?subject="
+                  class="home-link"
+                >
+                <!-- Contact-Us-Link-->
+                  support@TrackMyFiles
+                </a>
+              </div>
+            </div>
+            <div class="home-right2">
+              <div class="home-category5">
+                <span class="home-text77">Solutions</span>
+                <div class="home-links2">
+                  <span class="home-text78">Responsive Web Design</span>
+                  <span class="home-text79">Responsive Prototypesv</span>
+                  <span class="home-text80">Design to Code</span>
+                  <span class="home-text81">Static Website Builder</span>
+                  <span class="home-text82">Static Website Generator</span>
+                </div>
+              </div>
+              <div class="home-category6">
+                <span class="home-text83">Company</span>
+                <div class="home-links3">
+                  <span class="home-text84">About</span>
+                  <span class="home-text85">Team</span>
+                  <span class="home-text86">News</span>
+                  <span class="home-text87">Partners</span>
+                  <span class="home-text88">Careers</span>
+                  <span class="home-text89">Press &amp; Media</span>
+                </div>
+              </div>
+              <div class="home-category7">
+                <span class="home-text90">Solutions</span>
+                <div class="home-links4">
+                  <span class="home-text91">Twitter</span>
+                  <span class="home-text92">Linkedin</span>
+                  <span class="home-text93">Crunchbase</span>
+                  <span class="home-text94">Instagram</span>
+                  <span class="home-text95">Facebook</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-bottom">
+            <img
+              alt="pastedImage"
+              src="public/pastedimage-no9b-200h.png"
+              class="home-branding"
+            />
+            <span class="home-text96">SnehasishRoy©2024</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
