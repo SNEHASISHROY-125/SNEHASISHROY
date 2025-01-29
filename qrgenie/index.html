@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
   <!-- Hero Section -->
@@ -21,7 +22,7 @@
             QR Genie
           </span>
         </div>
-        <a href="https://www.amazon.in/snehasishroy-dev-QR-Genie/dp/B0DV5SCMD2/ref=sr_1_1?crid=1PUOHPPWF08W5&dib=eyJ2IjoiMSJ9.9CuZVwjt4srDjDxri3iMojZlPtAOphfXLbcJNZmPIFhdxVlFLql69uH6d1w-UaRxg-XfINYLLvljZYz3Lo8XxSUNE99ohuQ7pOnS18sgsTVPxZo-eWCObCS4zynnhtXfRyej32zRZLCi9uPYTEVrXi7S9m4n27em79R4_5FRyIbKzswAAVGl80p0FWrz7BmaELSazSAq_U9Qp4_3kdUa2uJvWTWKPV9CsTciF9_mRPo.lad13UzRbm37USDc1TQpOxV4NcDtXZx69t8s4oTBugE&dib_tag=se&keywords=qr+genie&qid=1738089709&s=software&sprefix=qr+genie%2Csoftware%2C330&sr=1-1" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-md">
+        <a href="https://github.com/SNEHASISHROY-125/DOCUMENT-SCANNER-APP/releases/download/animated_qr/QRGenie-0.9.3-arm64-v8a-debug.apk" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-md">
           Download Now
         </a>
       </nav>
@@ -87,28 +88,69 @@
     </section>
 
     <!-- Screenshots Carousel -->
-    <section class="bg-white rounded-2xl shadow-lg p-8 mb-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6">App Screenshots</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="relative group">
-          <img src="screenshot-01.png" alt="Screenshot" 
-               class="w-full h-64 object-cover rounded-xl shadow-md group-hover:shadow-lg transition-transform transform group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-xl"></div>
-        </div>
-        <div class="relative group">
-          <img src="screenshot-03.png" alt="Screenshot" 
-               class="w-full h-64 object-cover rounded-xl shadow-md group-hover:shadow-lg transition-transform transform group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-xl"></div>
-        </div>
-        <div class="relative group">
-          <img src="screenshot-02.png" alt="Screenshot" 
-               class="w-full h-64 object-cover rounded-xl shadow-md group-hover:shadow-lg transition-transform transform group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-xl"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- Add this CSS inside <head> -->
+<style>
+  .phone-mockup {
+    position: relative;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="284" height="573" viewBox="0 0 284 573"><path fill="%23FFF" d="M252 0H32C14.4 0 0 14.4 0 32v509c0 17.6 14.4 32 32 32h220c17.6 0 32-14.4 32-32V32c0-17.6-14.4-32-32-32zm-12 42v485H44V42h196z"/><path fill="%23FFF" d="M142 540c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12z"/></svg>') no-repeat center/contain;
+    padding: 2.8rem 1.2rem;
+    min-width: 300px;
+  }
+  
+  /* Custom scrollbar */
+  .scroll-container::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+  }
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+  }
+</style>
 
+<!-- Modified Screenshots Section -->
+<section class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">App Screenshots</h2>
+  
+  <div class="scroll-container flex overflow-x-auto pb-4 -mx-4 px-4">
+    <div class="flex space-x-6 flex-nowrap">
+      <!-- Screenshot 1 with Phone Frame -->
+      <div class="flex-shrink-0 w-80 phone-mockup">
+        <img src="screenshot-01.png" alt="QR Creation Screen" 
+             class="w-full h-full object-cover rounded-[1.2rem] shadow-md group-hover:shadow-lg transition-transform transform hover:scale-105">
+      </div>
+      
+      <!-- Screenshot 2 with Phone Frame -->
+      <div class="flex-shrink-0 w-80 phone-mockup">
+        <img src="screenshot-02.png" alt="Customization Screen" 
+             class="w-full h-full object-cover rounded-[1.2rem] shadow-md group-hover:shadow-lg transition-transform transform hover:scale-105">
+      </div>
+      
+      <!-- Screenshot 3 with Phone Frame -->
+      <div class="flex-shrink-0 w-80 phone-mockup">
+        <img src="screenshot-03.png" alt="Settings Screen" 
+             class="w-full h-full object-cover rounded-[1.2rem] shadow-md group-hover:shadow-lg transition-transform transform hover:scale-105">
+      </div>
+      
+      <!-- Add more screenshots as needed -->
+    </div>
+  </div>
+</section>
+  </main>
+<!-- Add this new section above the footer -->
+<section class="bg-gray-50 py-8">
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <h3 class="text-lg text-gray-600 mb-4">Also available on</h3>
+      <div class="flex justify-center gap-6">
+        <a href="https://www.amazon.in/snehasishroy-dev-QR-Genie/dp/B0DV5SCMD2/ref=sr_1_1?crid=1PUOHPPWF08W5&dib=eyJ2IjoiMSJ9.9CuZVwjt4srDjDxri3iMojZlPtAOphfXLbcJNZmPIFhdxVlFLql69uH6d1w-UaRxg-XfINYLLvljZYz3Lo8XxSUNE99ohuQ7pOnS18sgsTVPxZo-eWCObCS4zynnhtXfRyej32zRZLCi9uPYTEVrXi7S9m4n27em79R4_5FRyIbKzswAAVGl80p0FWrz7BmaELSazSAq_U9Qp4_3kdUa2uJvWTWKPV9CsTciF9_mRPo.lad13UzRbm37USDc1TQpOxV4NcDtXZx69t8s4oTBugE&dib_tag=se&keywords=qr+genie&qid=1738089709&s=software&sprefix=qr+genie%2Csoftware%2C330&sr=1-1" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-md" target="_blank" class="hover:scale-105 transition-transform">
+          <img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png" 
+               class="h-14" alt="Amazon Appstore">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
   <footer class="bg-gray-800 text-gray-300 py-8">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
@@ -122,7 +164,7 @@
         <div class="flex space-x-6">
           <a href="https://www.termsfeed.com/live/6fe0657c-20fe-4e4c-a862-ead20161782e" class="hover:text-white transition-colors">Privacy Policy</a>
           <a href="terms_of_service.html" class="hover:text-white transition-colors">Terms of Service</a>
-          <a href="https://github.com/SNEHASISHROY-125" class="hover:text-white transition-colors">Support</a>
+          <a href="https://snehasishroy-125.github.io/SNEHASISHROY/#contact" class="hover:text-white transition-colors">Support</a>
         </div>
       </div>
     </div>
