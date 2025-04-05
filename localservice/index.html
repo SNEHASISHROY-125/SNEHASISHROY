@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Service Booking Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.theme.min.css" rel="stylesheet"/>
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/glide.min.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <nav class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8 w-auto"/>
+                    <div class="hidden md:flex space-x-8 ml-10">
+                        <a href="#" class="text-custom font-medium">Home</a>
+                        <a href="#" class="text-gray-500 hover:text-custom font-medium">Services</a>
+                        <a href="#" class="text-gray-500 hover:text-custom font-medium">Providers</a>
+                        <a href="#" class="text-gray-500 hover:text-custom font-medium">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6"><div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium flex items-center"><i class="fas fa-map-marker-alt mr-2"></i>Available in West Bengal, India</div>
+                    <div class="relative">
+                        <input type="text" placeholder="Search services..." class="w-64 pl-10 pr-4 py-2 border border-gray-300 !rounded-button focus:ring-custom focus:border-custom"/>
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <button class="!rounded-button bg-custom text-white px-4 py-2 flex items-center space-x-2">
+                        <i class="fas fa-user"></i>
+                        <span>Sign In</span>
+                    </button>
+                    <div class="relative">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">3</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-16">
+        <section class="relative bg-custom h-[600px] overflow-hidden">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                <div class="w-1/2">
+                    <h1 class="text-5xl font-bold text-white mb-6">Book Professional Services<br/>With Confidence</h1>
+                    <p class="text-xl text-white/90 mb-8">Find and book trusted professionals for all your service needs.</p>
+                    <button class="!rounded-button bg-white text-custom px-8 py-3 text-lg font-semibold">Book Now</button>
+                </div>
+                <div class="w-1/2">
+                    <img src="https://creatie.ai/ai/api/search-image?query=A 3D vector-style image with a clean, solid background color showing a professional service provider in modern attire, holding tools and equipment, with a friendly smile and welcoming gesture&width=600&height=600&orientation=squarish&removebg=true&flag=7f441ce1-640e-4b69-8da5-2fa872d9e6c0&flag=e9fe61d7-0860-4b1e-8ec7-e33bb086d6b5&flag=d0a93ed7-e7e3-438c-8c50-bb39c86d872d&flag=7495cb1c-c4c6-4bb5-bf2d-207b7aba439b&flag=24369687-ae87-4d07-884c-904a99137022" alt="Hero" class="w-full h-auto object-contain"/>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-white">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Popular Service Categories</h2>
+                <div class="grid grid-cols-4 gap-8">
+                    <div class="p-6 border border-gray-200 !rounded-button text-center hover:border-custom transition-colors">
+                        <i class="fas fa-home text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Home Services</h3>
+                        <p class="text-gray-600">Cleaning, Repairs, Maintenance</p>
+                    </div>
+                    <div class="p-6 border border-gray-200 !rounded-button text-center hover:border-custom transition-colors">
+                        <i class="fas fa-briefcase text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Professional</h3>
+                        <p class="text-gray-600">Legal, Financial, Consulting</p>
+                    </div>
+                    <div class="p-6 border border-gray-200 !rounded-button text-center hover:border-custom transition-colors">
+                        <i class="fas fa-spa text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Health &amp; Beauty</h3>
+                        <p class="text-gray-600">Spa, Salon, Wellness</p>
+                    </div>
+                    <div class="p-6 border border-gray-200 !rounded-button text-center hover:border-custom transition-colors">
+                        <i class="fas fa-tools text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Skilled Trade</h3>
+                        <p class="text-gray-600">Plumbing, Electrical, HVAC</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Top Rated Service Providers</h2>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="bg-white p-6 !rounded-button shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <img src="https://creatie.ai/ai/api/search-image?query=A professional headshot of a confident middle-aged male service provider wearing a uniform and safety gear, with a clean studio background&width=80&height=80&orientation=squarish&flag=feb3d5ce-87d6-4c94-9fac-7bd711737835&flag=1c884d08-b11c-4f00-8658-4bb5b1123610&flag=e532629b-fd84-48db-80ba-209576fa2e7c&flag=67281e9a-9bae-4c17-ae95-f65acb7f1691&flag=73577c1b-c792-491e-98be-35b4c6b6b24a" alt="Provider" class="w-16 h-16 rounded-full object-cover"/>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">John Smith</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1 text-gray-600">4.9 (256 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Expert in home repairs and renovations with 15+ years of experience.</p>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Book Now</button>
+                    </div>
+                    <div class="bg-white p-6 !rounded-button shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <img src="https://creatie.ai/ai/api/search-image?query=A professional headshot of a friendly female service provider wearing a business suit, with a clean studio background&width=80&height=80&orientation=squarish&flag=17437646-e9c8-4e34-a9d8-aefac56c6444&flag=2f813af4-a105-4a71-813e-c0655fad285b&flag=c75a8480-38d9-4e6e-a14f-7d00842de475&flag=6c35e5d0-f6e1-415a-940b-31d4eb947150&flag=09d3007b-73d8-4cd2-8bd1-f22cc06ada1b" alt="Provider" class="w-16 h-16 rounded-full object-cover"/>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Sarah Johnson</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1 text-gray-600">4.8 (189 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Professional cleaning services with attention to detail.</p>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Book Now</button>
+                    </div>
+                    <div class="bg-white p-6 !rounded-button shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <img src="https://creatie.ai/ai/api/search-image?query=A professional headshot of a young male service provider wearing a tech company uniform, with a clean studio background&width=80&height=80&orientation=squarish&flag=484c8595-e118-4572-b14a-ddfa8a8c2b5e&flag=abeb2e7c-f703-459a-95ed-4c2bfddb04ec&flag=433b3add-bedb-4a9a-8a72-1c68efeaaad8&flag=cc7bacff-779c-4ef1-9d96-4d0bcc89238b&flag=3b769986-0e8d-456c-92d2-83243b05581e" alt="Provider" class="w-16 h-16 rounded-full object-cover"/>                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold">Mike Wilson</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1 text-gray-600">4.7 (142 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Specialized in electrical installations and maintenance.</p>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-white">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gray-50 p-8 !rounded-button">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Book Your Service</h2>
+                    <div class="grid grid-cols-4 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
+                            <select class="w-full border-gray-300 !rounded-button focus:ring-custom focus:border-custom">
+                                <option>Select a service</option>
+                                <option>Home Cleaning</option>
+                                <option>Plumbing</option>
+                                <option>Electrical</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                            <input type="date" class="w-full border-gray-300 !rounded-button focus:ring-custom focus:border-custom"/>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                            <select class="w-full border-gray-300 !rounded-button focus:ring-custom focus:border-custom">
+                                <option>Select time</option>
+                                <option>Morning (8-12)</option>
+                                <option>Afternoon (12-4)</option>
+                                <option>Evening (4-8)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                            <input type="text" placeholder="Enter your address" class="w-full border-gray-300 !rounded-button focus:ring-custom focus:border-custom"/>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button class="!rounded-button bg-custom text-white px-8 py-3 text-lg font-semibold">Book Service</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Special Offers</h2>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="bg-white p-6 !rounded-button shadow-sm border border-gray-200">
+                        <div class="text-custom text-lg font-semibold mb-2">Limited Time Offer</div>
+                        <h3 class="text-2xl font-bold mb-4">20% Off First Booking</h3>
+                        <p class="text-gray-600 mb-4">Use code: FIRST20</p>
+                        <div class="text-sm text-gray-500 mb-4">Expires in: 2 days 14:30:45</div>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Claim Offer</button>
+                    </div>
+                    <div class="bg-white p-6 !rounded-button shadow-sm border border-gray-200">
+                        <div class="text-custom text-lg font-semibold mb-2">Weekend Special</div>
+                        <h3 class="text-2xl font-bold mb-4">Free Deep Cleaning</h3>
+                        <p class="text-gray-600 mb-4">With any regular cleaning booking</p>
+                        <div class="text-sm text-gray-500 mb-4">Expires in: 5 days 08:45:30</div>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Claim Offer</button>
+                    </div>
+                    <div class="bg-white p-6 !rounded-button shadow-sm border border-gray-200">
+                        <div class="text-custom text-lg font-semibold mb-2">Bundle Deal</div>
+                        <h3 class="text-2xl font-bold mb-4">Save 30% on Bundle</h3>
+                        <p class="text-gray-600 mb-4">Book any 3 services together</p>
+                        <div class="text-sm text-gray-500 mb-4">Expires in: 3 days 21:15:20</div>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Claim Offer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-white">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Why Choose Us</h2>
+                <div class="grid grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Secure Booking</h3>
+                        <p class="text-gray-600">100% secure payment processing</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-user-check text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Verified Providers</h3>
+                        <p class="text-gray-600">Background checked professionals</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-clock text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                        <p class="text-gray-600">Round the clock customer service</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-medal text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Satisfaction Guarantee</h3>
+                        <p class="text-gray-600">100% money back guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="py-16 bg-white min-h-screen"><div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-3 gap-8"><div class="col-span-3"><h2 class="text-2xl font-bold mb-6">Checkout</h2><div class="bg-gray-50 p-6 rounded-lg"><div class="space-y-6"><div><h3 class="text-lg font-semibold mb-4">Order Summary</h3><div class="space-y-3"><div class="flex justify-between"><span>Home Cleaning Service (2 hours)</span><span class="font-semibold">₹2,999</span></div><div class="flex justify-between"><span>Plumbing Service (1 hour)</span><span class="font-semibold">₹3,999</span></div><div class="flex justify-between pt-3 border-t"><span>Service Fee</span><span class="font-semibold">₹200</span></div><div class="flex justify-between"><span>GST (18%)</span><span class="font-semibold">₹1,296</span></div><div class="flex justify-between pt-3 border-t font-bold text-lg"><span>Total Amount</span><span>₹8,494</span></div></div></div><div class="border-t pt-6"><h3 class="text-lg font-semibold mb-4">Payment Method</h3><div class="p-4 bg-white rounded-lg border"><div class="flex items-center space-x-3"><i class="fas fa-money-bill-wave text-2xl text-gray-600"></i><div><p class="font-semibold">Cash on Delivery</p><p class="text-sm text-gray-600">Pay when service is completed</p></div></div></div></div><div class="border-t pt-6"><h3 class="text-lg font-semibold mb-4">Service Address</h3><div class="space-y-4"><div><label class="block text-sm font-medium text-gray-700 mb-1">Full Address</label><textarea class="w-full border-gray-300 rounded-lg" rows="3"></textarea></div><div><label class="block text-sm font-medium text-gray-700 mb-1">Additional Notes</label><textarea class="w-full border-gray-300 rounded-lg" rows="2" placeholder="Any special instructions for the service provider"></textarea></div></div></div><button class="w-full bg-custom text-white py-3 rounded-lg font-semibold mt-6">Confirm Order</button><div class="mt-4 text-center text-sm text-gray-600">By confirming your order, you agree to our Terms of Service</div></div></div></div></div></div></section></main>
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-4 gap-8">
+                <div>
+                    <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8 w-auto mb-6"/>
+                    <p class="text-gray-400">Your trusted platform for professional services booking.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Professional Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Health &amp; Beauty</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Skilled Trade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and updates.</p>
+                    <form class="space-y-4">
+                        <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 !rounded-button bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:ring-custom focus:border-custom"/>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 w-full">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>© 2024 Service Booking Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
