@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation | NexaAPI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                        },
+                        primary: {
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        
+        /* Code block styling */
+        .code-block {
+            position: relative;
+        }
+        .code-block pre {
+            background-color: #1e293b;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            border: 1px solid #334155;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: rgba(71, 85, 105, 0.7);
+            color: white;
+        }
+        
+        /* Animation for endpoint cards */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .endpoint-card {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        /* Responsive sidebar */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 50;
+                height: 100vh;
+                transition: transform 0.3s ease;
+                background-color: #0f172a;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 40;
+            }
+            .sidebar-overlay.open {
+                display: block;
+            }
+        }
+        
+        /* Table styling */
+        .table-dark th {
+            background-color: #1e293b;
+            color: #94a3b8;
+        }
+        .table-dark td {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-color: #334155;
+        }
+        .table-dark tr:hover td {
+            background-color: #334155;
+        }
+        
+        /* Input styling */
+        .dark-input {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+        .dark-input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 1px #7c3aed;
+        }
+        
+        /* Toggle switch */
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #7c3aed;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-200 font-sans">
+    <!-- Mobile menu button -->
+    <div class="lg:hidden fixed top-4 left-4 z-50">
+        <button id="menu-toggle" class="p-2 rounded-md bg-primary-600 text-white shadow-lg">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    
+    <!-- Sidebar overlay -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar w-64 bg-dark-800 shadow-lg h-screen fixed overflow-y-auto">
+        <div class="p-4 border-b border-dark-700">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold">N</div>
+                <h1 class="text-xl font-bold text-primary-600">NexaAPI</h1>
+            </div>
+            <p class="text-sm text-dark-500 mt-1">v2.1.0</p>
+        </div>
+        
+        <div class="p-4">
+            <div class="mb-6">
+                <h2 class="text-sm font-semibold text-dark-500 uppercase tracking-wider mb-2">Introduction</h2>
+                <ul class="space-y-1">
+                    <li><a href="#overview" class="text-primary-600 hover:text-primary-500 block py-1">Overview</a></li>
+                    <li><a href="#authentication" class="text-dark-400 hover:text-primary-500 block py-1">Authentication</a></li>
+                    <li><a href="#rate-limiting" class="text-dark-400 hover:text-primary-500 block py-1">Rate Limiting</a></li>
+                    <li><a href="#errors" class="text-dark-400 hover:text-primary-500 block py-1">Errors</a></li>
+                </ul>
+            </div>
+            
+            <div class="mb-6">
+                <h2 class="text-sm font-semibold text-dark-500 uppercase tracking-wider mb-2">Endpoints</h2>
+                <ul class="space-y-1">
+                    <li><a href="#users" class="text-dark-400 hover:text-primary-500 block py-1">Users</a></li>
+                    <li><a href="#products" class="text-dark-400 hover:text-primary-500 block py-1">Products</a></li>
+                    <li><a href="#orders" class="text-dark-400 hover:text-primary-500 block py-1">Orders</a></li>
+                    <li><a href="#payments" class="text-dark-400 hover:text-primary-500 block py-1">Payments</a></li>
+                    <li><a href="#analytics" class="text-dark-400 hover:text-primary-500 block py-1">Analytics</a></li>
+                </ul>
+            </div>
+            
+            <div class="mb-6">
+                <h2 class="text-sm font-semibold text-dark-500 uppercase tracking-wider mb-2">SDKs</h2>
+                <ul class="space-y-1">
+                    <li><a href="#javascript" class="text-dark-400 hover:text-primary-500 block py-1">JavaScript</a></li>
+                    <li><a href="#python" class="text-dark-400 hover:text-primary-500 block py-1">Python</a></li>
+                    <li><a href="#php" class="text-dark-400 hover:text-primary-500 block py-1">PHP</a></li>
+                </ul>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-dark-700">
+                <a href="#" class="flex items-center space-x-2 text-dark-400 hover:text-primary-500">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Support</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="lg:ml-64">
+        <!-- Header -->
+        <header class="bg-dark-800 shadow-sm">
+            <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-200">API Documentation</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search endpoints..." class="dark-input pl-10 pr-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-600">
+                        <i class="fas fa-search absolute left-3 top-3 text-dark-500"></i>
+                    </div>
+                    <button class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-key mr-2"></i> Get API Key
+                    </button>
+                    <label class="theme-toggle ml-2">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </header>
+        
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Overview section -->
+            <section id="overview" class="mb-12">
+                <div class="bg-dark-800 shadow rounded-lg overflow-hidden border border-dark-700">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-200 mb-4">Overview</h2>
+                        <p class="text-dark-400 mb-4">The NexaAPI provides a RESTful interface with JSON responses that allows you to integrate our services with your application. All API endpoints are served over HTTPS and must be accessed with an API key.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                            <div class="bg-dark-700 p-4 rounded-lg border border-dark-600">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 bg-primary-900 rounded-full flex items-center justify-center text-primary-500 mr-3">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-primary-500">Secure</h3>
+                                </div>
+                                <p class="text-dark-400 text-sm">All requests require authentication via API keys and are encrypted with TLS.</p>
+                            </div>
+                            
+                            <div class="bg-dark-700 p-4 rounded-lg border border-dark-600">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 bg-green-900 rounded-full flex items-center justify-center text-green-500 mr-3">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-green-500">Fast</h3>
+                                </div>
+                                <p class="text-dark-400 text-sm">Average response times under 100ms with 99.9% uptime SLA.</p>
+                            </div>
+                            
+                            <div class="bg-dark-700 p-4 rounded-lg border border-dark-600">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 bg-purple-900 rounded-full flex items-center justify-center text-purple-500 mr-3">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-purple-500">RESTful</h3>
+                                </div>
+                                <p class="text-dark-400 text-sm">Standard REST conventions with predictable resource-oriented URLs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Authentication section -->
+            <section id="authentication" class="mb-12">
+                <div class="bg-dark-800 shadow rounded-lg overflow-hidden border border-dark-700">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-200 mb-4">Authentication</h2>
+                        <p class="text-dark-400 mb-4">Authenticate your API requests by including your secret API key in the request headers. Your API keys carry many privileges, so be sure to keep them secure!</p>
+                        
+                        <div class="code-block mb-6">
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy mr-1"></i> Copy
+                            </button>
+                            <pre><code>curl https://api.nexa.com/v1/users \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                        </div>
+                        
+                        <div class="bg-yellow-900 bg-opacity-20 border-l-4 border-yellow-500 p-4 mb-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-triangle text-yellow-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-yellow-400">
+                                        <strong>Important:</strong> Never share your API keys in client-side code or public repositories. All API requests should be made from server-side code.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-gray-200 mt-6 mb-2">API Keys</h3>
+                        <p class="text-dark-400 mb-4">You can generate and manage your API keys in the <a href="#" class="text-primary-500 hover:underline">developer dashboard</a>. Each key is associated with specific permissions that determine which API endpoints it can access.</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-dark-600 table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Key Type</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Prefix</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Permissions</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-dark-700">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">Secret Key</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">sk_</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">Full access</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400 font-mono">sk_test_51K...</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">Publishable Key</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">pk_</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">Read-only</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400 font-mono">pk_test_51K...</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">Restricted Key</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">rk_</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400">Custom</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-400 font-mono">rk_test_51K...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Users endpoints -->
+            <section id="users" class="mb-12">
+                <div class="bg-dark-800 shadow rounded-lg overflow-hidden border border-dark-700">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold text-gray-200">Users</h2>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-900 text-primary-500">Version 2.1</span>
+                        </div>
+                        <p class="text-dark-400 mb-6">Manage user accounts, authentication, and permissions through these endpoints.</p>
+                        
+                        <!-- Endpoint cards -->
+                        <div class="space-y-6">
+                            <!-- Create User -->
+                            <div id="create-user" class="endpoint-card border border-dark-700 rounded-lg overflow-hidden" style="animation-delay: 0.1s">
+                                <div class="bg-dark-700 px-4 py-3 border-b border-dark-600 flex items-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-900 text-green-500 mr-3">POST</span>
+                                    <span class="font-mono text-sm text-gray-300">/v1/users</span>
+                                    <button class="ml-auto text-dark-400 hover:text-gray-200" onclick="toggleEndpoint(this)">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4 hidden">
+                                    <p class="text-dark-400 mb-4">Creates a new user account with the specified parameters.</p>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Parameters</h3>
+                                    <div class="overflow-x-auto mb-4">
+                                        <table class="min-w-full divide-y divide-dark-600 table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Name</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Type</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Required</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-dark-700">
+                                                <tr>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">email</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">string</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">Yes</td>
+                                                    <td class="px-3 py-2 text-sm text-dark-400">The user's email address</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">name</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">string</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">No</td>
+                                                    <td class="px-3 py-2 text-sm text-dark-400">The user's full name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">password</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">string</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">Yes</td>
+                                                    <td class="px-3 py-2 text-sm text-dark-400">Password (min 8 characters)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Example Request</h3>
+                                    <div class="code-block mb-4">
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy mr-1"></i> Copy
+                                        </button>
+                                        <pre><code>curl -X POST https://api.nexa.com/v1/users \
+  -H "Authorization: Bearer sk_test_12345" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "name": "John Doe",
+    "password": "securepassword123"
+  }'</code></pre>
+                                    </div>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Example Response</h3>
+                                    <div class="code-block">
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy mr-1"></i> Copy
+                                        </button>
+                                        <pre><code>{
+  "id": "user_123",
+  "object": "user",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "created_at": 1625097600,
+  "updated_at": 1625097600
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Get User -->
+                            <div id="get-user" class="endpoint-card border border-dark-700 rounded-lg overflow-hidden" style="animation-delay: 0.2s">
+                                <div class="bg-dark-700 px-4 py-3 border-b border-dark-600 flex items-center">
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-500 mr-3">GET</span>
+                                    <span class="font-mono text-sm text-gray-300">/v1/users/{id}</span>
+                                    <button class="ml-auto text-dark-400 hover:text-gray-200" onclick="toggleEndpoint(this)">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="p-4 hidden">
+                                    <p class="text-dark-400 mb-4">Retrieves the details of an existing user. You need only supply the unique user identifier that was returned upon user creation.</p>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Parameters</h3>
+                                    <div class="overflow-x-auto mb-4">
+                                        <table class="min-w-full divide-y divide-dark-600 table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Name</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Type</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Required</th>
+                                                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-dark-400 uppercase tracking-wider">Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-dark-700">
+                                                <tr>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">id</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">string</td>
+                                                    <td class="px-3 py-2 whitespace-nowrap text-sm text-dark-400">Yes</td>
+                                                    <td class="px-3 py-2 text-sm text-dark-400">The ID of the user to retrieve</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Example Request</h3>
+                                    <div class="code-block mb-4">
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy mr-1"></i> Copy
+                                        </button>
+                                        <pre><code>curl https://api.nexa.com/v1/users/user_123 \
+  -H "Authorization: Bearer sk_test_12345"</code></pre>
+                                    </div>
+                                    
+                                    <h3 class="font-medium text-gray-200 mb-2">Example Response</h3>
+                                    <div class="code-block">
+                                        <button class="copy-btn" onclick="copyCode(this)">
+                                            <i class="fas fa-copy mr-1"></i> Copy
+                                        </button>
+                                        <pre><code>{
+  "id": "user_123",
+  "object": "user",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "created_at": 1625097600,
+  "updated_at": 1625097600
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Rate limiting section -->
+            <section id="rate-limiting" class="mb-12">
+                <div class="bg-dark-800 shadow rounded-lg overflow-hidden border border-dark-700">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-200 mb-4">Rate Limiting</h2>
+                        <p class="text-dark-400 mb-4">To prevent abuse and ensure fair usage, we implement rate limits on all API requests. The exact limits depend on your account type and usage patterns.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <div class="border border-dark-700 rounded-lg p-4 bg-dark-700">
+                                <h3 class="font-semibold text-gray-200 mb-2">Standard Limits</h3>
+                                <ul class="space-y-2 text-dark-400">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>100 requests per minute per API key</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>1,000 requests per hour per API key</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>10,000 requests per day per account</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border border-dark-700 rounded-lg p-4 bg-dark-700">
+                                <h3 class="font-semibold text-gray-200 mb-2">Enterprise Limits</h3>
+                                <ul class="space-y-2 text-dark-400">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>500 requests per minute per API key</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>5,000 requests per hour per API key</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                        <span>50,000 requests per day per account</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h3 class="font-semibold text-gray-200 mb-2">Checking Rate Limits</h3>
+                            <p class="text-dark-400 mb-4">The current rate limit status is returned in the headers of every API response:</p>
+                            
+                            <div class="code-block">
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy mr-1"></i> Copy
+                                </button>
+                                <pre><code>HTTP/1.1 200 OK
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 99
+X-RateLimit-Reset: 1625097600</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <footer class="mt-12 border-t border-dark-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                        <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold">N</div>
+                        <span class="text-lg font-semibold text-gray-200">NexaAPI</span>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-dark-400 hover:text-primary-500">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-dark-400 hover:text-primary-500">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-dark-400 hover:text-primary-500">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-8 text-center md:text-left">
+                    <p class="text-sm text-dark-500">&copy; 2023 NexaAPI. All rights reserved.</p>
+                </div>
+            </footer>
+        </main>
+    </div>
+    
+    <script>
+        // Toggle mobile menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('open');
+        });
+        
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('open');
+        });
+        
+        // Toggle endpoint details
+        function toggleEndpoint(button) {
+            const endpointCard = button.closest('.endpoint-card');
+            const content = endpointCard.querySelector('div:nth-child(2)');
+            const icon = button.querySelector('i');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+        
+        // Copy code blocks
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                // Change button text temporarily
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check mr-1"></i> Copied!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    sidebar.classList.remove('open');
+                    sidebarOverlay.classList.remove('open');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animate endpoint cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.endpoint-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use dark theme by default
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.classList.add(savedTheme);
+        if (savedTheme === 'dark') {
+            themeToggle.checked = true;
+        }
+        
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
