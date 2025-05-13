@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .tag {
+            transition: all 0.2s ease;
+        }
+        .tag:hover {
+            transform: scale(1.05);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="hero-gradient text-white shadow-lg">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-pulse">My Projects</h1>
+            <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">A showcase of my creative work and technical solutions</p>
+            <div class="mt-8">
+                <a href="#projects" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    Explore Projects
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Browse My Work</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Filter projects by category to find exactly what you're looking for</p>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition" data-filter="all">All Projects</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition" data-filter="web">Web Development</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition" data-filter="mobile">Mobile Apps</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition" data-filter="design">UI/UX Design</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 transition" data-filter="other">Other</button>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="web">
+                <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-laptop-code text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">E-commerce Platform</h3>
+                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Web</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">A full-featured online store with payment integration and inventory management.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">React</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Node.js</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">MongoDB</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="mobile">
+                <div class="h-48 bg-gradient-to-r from-green-500 to-teal-400 flex items-center justify-center">
+                    <i class="fas fa-mobile-alt text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">Fitness Tracker App</h3>
+                        <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Mobile</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Track workouts, nutrition, and progress with this intuitive mobile application.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Flutter</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Firebase</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Dart</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="design">
+                <div class="h-48 bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center">
+                    <i class="fas fa-paint-brush text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">Banking App UI Kit</h3>
+                        <span class="text-xs px-2 py-1 bg-pink-100 text-pink-800 rounded-full">Design</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Modern banking interface with 50+ screens and design system components.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Figma</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Illustrator</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">UI Design</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-dribbble text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="web">
+                <div class="h-48 bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center">
+                    <i class="fas fa-chart-line text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">Analytics Dashboard</h3>
+                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Web</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Real-time data visualization with interactive charts and custom reporting.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Vue.js</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">D3.js</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Express</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="other">
+                <div class="h-48 bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center">
+                    <i class="fas fa-robot text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">AI Chatbot</h3>
+                        <span class="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full">Other</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Conversational AI assistant for customer support with NLP capabilities.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Python</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">TensorFlow</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">NLP</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card bg-white rounded-xl shadow-md overflow-hidden relative" data-category="design">
+                <div class="h-48 bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center">
+                    <i class="fas fa-shopping-bag text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-800">Brand Identity</h3>
+                        <span class="text-xs px-2 py-1 bg-pink-100 text-pink-800 rounded-full">Design</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Complete brand package including logo, colors, typography and guidelines.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Branding</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Illustration</span>
+                        <span class="tag text-xs px-2 py-1 bg-gray-100 text-gray-800 rounded-full">Typography</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">
+                            <i class="fab fa-behance text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">42+</div>
+                    <div class="text-gray-600">Projects Completed</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">18</div>
+                    <div class="text-gray-600">Happy Clients</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">7</div>
+                    <div class="text-gray-600">Years Experience</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2">100%</div>
+                    <div class="text-gray-600">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-indigo-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Have a project in mind?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">Let's work together to bring your ideas to life!</p>
+            <a href="#" class="inline-block bg-white text-indigo-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                Contact Me
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">My Projects</h3>
+                    <p class="text-gray-400 mt-2">Showcasing my best work and creative solutions</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-dribbble text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 My Projects Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-500', 'text-white'));
+                    button.classList.add('active', 'bg-blue-500', 'text-white');
+                    
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Initialize with "All Projects" active
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active', 'bg-blue-500', 'text-white');
+            
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            projectCards.forEach((card, index) => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
