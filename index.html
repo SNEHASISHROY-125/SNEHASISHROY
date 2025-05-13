@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snehasish Roy | Portfolio</title>
+    <link rel="icon" href="src/favicon.ico" type="image/png" sizes="16x16">
+    <title>Snehasish Roy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -181,7 +182,7 @@
         .app-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 13px;
             padding: 20px;
             flex-grow: 0.2;
         }
@@ -569,7 +570,21 @@
                     <div class="volume-buttons"></div>
                     <div class="mobile-screen">
                         <div class="status-bar">
-                            <span>9:41</span>
+                            <span id="phone-clock">9:41</span>
+                            <script>
+                                // Update phone clock every second
+                                function updatePhoneClock() {
+                                    const now = new Date();
+                                    // Format as HH:MM (24-hour, leading zeros)
+                                    let h = now.getHours();
+                                    let m = now.getMinutes();
+                                    if (h < 10) h = '0' + h;
+                                    if (m < 10) m = '0' + m;
+                                    document.getElementById('phone-clock').textContent = `${h}:${m}`;
+                                }
+                                setInterval(updatePhoneClock, 1000);
+                                updatePhoneClock();
+                            </script>
                             <div class="flex space-x-2">
                                 <i class="fas fa-signal"></i>
                                 <i class="fas fa-wifi"></i>
@@ -592,7 +607,7 @@
                                 </div>
                                 <span>KivstarTV</span>
                             </div>
-                            <div class="app-icon" style="background: #10b981;" onclick="openApp('messages')">
+                            <div class="app-icon" onclick="openApp('messages')">
                                 <i class="fas fa-comment-alt"></i>
                                 <span>Messages</span>
                             </div>
@@ -1200,7 +1215,7 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Phone</h4>
-                                <a href="https://t.me/rsnehasish125" class="text-gray-700">Contact Me Here</a>
+                                <a href="https://t.me/rsnehasish125" class="text-gray-700">Let's chat</a>
                             </div>
                         </div>
                         
